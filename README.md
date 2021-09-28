@@ -20,7 +20,7 @@ $ cd ./sniper
 ```json
 {
 	"token": "<Your bot's token>", //obtain from https://discord.com/developers/applications
-	"application_id": "<Your application's id>" //obtain https://discord.com/developers/applications
+	"application_id": "<Your application's id>" , //obtain https://discord.com/developers/applications
 }
 ```
 
