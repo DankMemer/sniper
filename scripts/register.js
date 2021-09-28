@@ -23,7 +23,7 @@ const rest = new REST({ version: "9" }).setToken(token);
     console.log("[sniper] :: Started refreshing application (/) commands.");
 
     await rest.put(
-      //if there is the guild id then register guild specific sommands otherwise register a global command.
+      
       guild
         ? Routes.applicationGuildCommands(application_id, guild)
         : Routes.applicationCommands(application_id),

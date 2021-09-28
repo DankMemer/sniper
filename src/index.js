@@ -11,7 +11,7 @@ client.on("ready", () => {
   console.log(`[sniper] :: Logged in as ${client.user.tag}.`);
 });
 
-client.on("messageDelete", async message => {
+client.on("messageDelete", async (message) => {
   snipes[message.guild.id] = {
     author: message.author,
     content: message.content,
@@ -19,11 +19,11 @@ client.on("messageDelete", async message => {
     createdAt: message.createdTimestamp,
   };
 });
-client.on("messageUpdate", async (OldMessage, NewMessage) => {
+client.on("messageUpdate", async (oldMessage, newMessage) => {
   esnipes[message.guild.id] = {
     author: message.author,
-    oldcontent: OldMessage.content,
-    newcontent: NewMessage.content,
+    oldcontent: oldMessage.content,
+    newcontent: newMessage.content,
     channel: message.channel.id,
   };
 });
@@ -39,7 +39,7 @@ client.on("interactionCreate", async (interaction) => {
                 new MessageEmbed()
                   .setDescription(snipe.content)
                   .setAuthor(snipe.author.tag)
-                  .setFooter(`Sniped from : <#${snipe.channel}`)
+                  .setFooter(`Sniped from : <#${snipe.channel}>`)
                   .setTimestamp(snipe.createdAt),
               ],
             }
@@ -57,7 +57,7 @@ client.on("interactionCreate", async (interaction) => {
                     `Old Message:\n${snipe.oldcontent}\nNewMessage:${snipe.newcontent}`
                   )
                   .setAuthor(snipe.author.tag)
-                  .setFooter(`Sniped from : <#${snipe.channel}`),
+                  .setFooter(`Sniped from : <#${snipe.channel}>`),
               ],
             }
           : "There's nothing to esnipe!"

@@ -16,11 +16,11 @@ $ cd ./sniper
 ```
 
 2. Create config.json:
-
+Both the values can be obtained from [here](https://discord.com/developers/applications)
 ```json
 {
-	"token": "<Your bot's token>", //obtain from https://discord.com/developers/applications
-	"application_id": "<Your application's id>" , //obtain https://discord.com/developers/applications
+	"token": "<Your bot's token>", 
+	"application_id": "<Your application's id>" , 
 }
 ```
 
@@ -37,6 +37,9 @@ Without specifying [guild id], snipe command will available on all your app's gu
 
 With [guild id] it will be available only within the guild specified . It will update instantly.
 
+## PM2
+Though not necessary , using pm2 to handle your bot process is a good idea 
+In short : it just restarts your bot on restart you can learn more about it [here](https://pm2.keymetrics.io/)
 ## License
 
 [MIT](https://tldrlegal.com/license/mit-license)
