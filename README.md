@@ -2,7 +2,7 @@
 
 # Sniper
 
-> An easy to run simple bot that lets you snipe messages in your Discord server.
+> An easy to run simple bot that lets you snipe and editsnipe messages in your Discord server.
 
 ## Setup
 
@@ -10,25 +10,25 @@ Node.js 16.6.0 or newer is required.
 
 1. Run:
 
-```
-$ git clone https://github.com/DankMemer/sniper.git
+```bash
+$ git clone https://github.com/DankMemer/sniper.git 
 $ cd ./sniper
 ```
 
 2. Create config.json:
 
-```
+```json
 {
-	"token": "<Your bot's token>",
-	"application_id": "<Your application's id>"
+	"token": "<Your bot's token>", //obtain from https://discord.com/developers/applications
+	"application_id": "<Your application's id>" //obtain https://discord.com/developers/applications
 }
 ```
 
 3. Run:
 
-```
+```shell
 $ npm i
-$ npm run register [guild id]
+$ npm run register [guild id] 
 $ npm run bot
 ```
 

@@ -5,7 +5,7 @@
 	"main": "src/index.js",
 	"scripts": {
 		"register": "node scripts/register.js",
-		"bot": "node src/index.js"
+		"bot": "pm2 src/index.js"
 	},
 	"repository": {
 		"type": "git",
@@ -19,6 +19,8 @@
 	"homepage": "https://github.com/DankMemer/sniper#readme",
 	"dependencies": {
 		"@discordjs/rest": "^0.1.0-canary.0",
-		"discord.js": "^13.1.0"
+		"discord.js": "^13.1.0",
+		"pm2" : "^5.1.2"
+
 	}
 }
