@@ -5,7 +5,8 @@
 	"main": "src/index.js",
 	"scripts": {
 		"register": "node scripts/register.js",
-		"bot": "node src/index.js"
+		"bot": "node src/index.js",
+		"prettier": "prettier --write \"**/*.js\""
 	},
 	"repository": {
 		"type": "git",
