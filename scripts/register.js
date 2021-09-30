@@ -9,6 +9,36 @@ const commands = [
 	{
 		name: "snipe",
 		description: "Shows the last deleted message from a specified channel!",
+		options: [
+			{
+				type: 7, // text channel
+				name: "channel",
+				description: "The channel to snipe",
+			},
+		],
+	},
+	{
+		name: "editsnipe",
+		description: "Shows the last edited message from a specified channel!",
+		options: [
+			{
+				type: 7, // text channel
+				name: "channel",
+				description: "The channel to snipe",
+			},
+		],
+	},
+	{
+		name: "reactionsnipe",
+		description:
+			"Shows the last removed reaction from a specified channel!",
+		options: [
+			{
+				type: 7, // text channel
+				name: "channel",
+				description: "The channel to snipe",
+			},
+		],
 	},
 ];
 
