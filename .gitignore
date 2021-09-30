@@ -103,4 +103,9 @@ dist
 # TernJS port file
 .tern-port
 
+# IDE config
+.idea/
+
+# other
+.DS_Store
 config.json

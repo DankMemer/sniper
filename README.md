@@ -10,14 +10,14 @@ Node.js 16.6.0 or newer is required.
 
 1. Run:
 
-```
+```bash
 $ git clone https://github.com/DankMemer/sniper.git
 $ cd ./sniper
 ```
 
 2. Create config.json:
 
-```
+```json
 {
 	"token": "<Your bot's token>",
 	"application_id": "<Your application's id>"
@@ -26,16 +26,16 @@ $ cd ./sniper
 
 3. Run:
 
-```
+```bash
 $ npm i
 $ npm run register [guild id]
 $ npm run bot
 ```
 
 Note:
-Without specifying [guild id], snipe command will available on all your app's guilds. It will fan out slowly across all guilds, and will be guaranteed to be updated in an hour (due to Discord's cache).
+Without specifying [guild id], snipe command will available on all of your app's guilds. It will fan out slowly across all guilds, and will be guaranteed to be updated in an hour (due to Discord's cache).
 
-With [guild id] it will be available only within the guild specified . It will update instantly.
+With [guild id] it will be available only within the guild specified. It will update instantly.
 
 ## License
 
