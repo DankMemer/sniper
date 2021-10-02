@@ -23,36 +23,31 @@ client.on("ready", () => {
 	console.log(`[sniper] :: Logged in as ${client.user.tag}.`);
 });
 
-client.on("messageDelete", async (message) => {
-	if (message.partial) return; // content is null
-
-	snipes[message.channel.id] = {
-		author: message.author,
-		content: message.content,
-		createdAt: message.createdTimestamp,
-	};
+client.on("messageDelete", async ({ channel, author, content, createdAt }) => {
+	if (!content) return;
+	snipes[channel.id] = { author: author.tag, content, createdAt };
 });
 
-client.on("messageUpdate", async (oldMessage, newMessage) => {
-	if (oldMessage.partial) return; // content is null
+client.on(
+	"messageUpdate",
+	async ({ channel, author, content }, { editedAt }) => {
+		if (!content) return;
+		editSnipes[channel.id] = { author: author.tag, content, editedAt };
+	}
+);
 
-	editSnipes[oldMessage.channel.id] = {
-		author: oldMessage.author,
-		content: oldMessage.content,
-		createdAt: newMessage.editedTimestamp,
-	};
-});
-
-client.on("messageReactionRemove", async (reaction, user) => {
-	if (reaction.partial) reaction = await reaction.fetch();
-
-	reactionSnipes[reaction.message.channel.id] = {
-		user: user,
-		emoji: reaction.emoji,
-		messageURL: reaction.message.url,
-		createdAt: Date.now(),
-	};
-});
+client.on(
+	"messageReactionRemove",
+	async ({ partial, emoji, message }, author) => {
+		if (partial) return;
+		reactionSnipes[reaction.message.channel.id] = {
+			author: author.tag,
+			emoji,
+			messageURL: message.url,
+			createdAt: Date.now(),
+		};
+	}
+);
 
 client.on("interactionCreate", async (interaction) => {
 	if (!interaction.isCommand()) return;
@@ -69,7 +64,7 @@ client.on("interactionCreate", async (interaction) => {
 						embeds: [
 							new MessageEmbed()
 								.setDescription(snipe.content)
-								.setAuthor(snipe.author.tag)
+								.setAuthor(snipe.author)
 								.setFooter(`#${channel.name}`)
 								.setTimestamp(snipe.createdAt),
 						],
@@ -85,9 +80,9 @@ client.on("interactionCreate", async (interaction) => {
 						embeds: [
 							new MessageEmbed()
 								.setDescription(snipe.content)
-								.setAuthor(snipe.author.tag)
+								.setAuthor(snipe.author)
 								.setFooter(`#${channel.name}`)
-								.setTimestamp(snipe.createdAt),
+								.setTimestamp(snipe.editedAt),
 						],
 				  }
 				: "There's nothing to snipe!"
@@ -105,7 +100,7 @@ client.on("interactionCreate", async (interaction) => {
 										snipe.emoji
 									)} on [this message](${snipe.messageURL})`
 								)
-								.setAuthor(snipe.user.tag)
+								.setAuthor(snipe.author)
 								.setFooter(`#${channel.name}`)
 								.setTimestamp(snipe.createdAt),
 						],

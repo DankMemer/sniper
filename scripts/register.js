@@ -5,40 +5,30 @@ const { token, application_id } = require("../config.json");
 
 const guild = process.argv[2];
 
+const options = [
+	{
+		type: 7, // text channel
+		name: "channel",
+		description: "The channel to snipe",
+	},
+];
+
 const commands = [
 	{
 		name: "snipe",
 		description: "Shows the last deleted message from a specified channel!",
-		options: [
-			{
-				type: 7, // text channel
-				name: "channel",
-				description: "The channel to snipe",
-			},
-		],
+		options,
 	},
 	{
 		name: "editsnipe",
 		description: "Shows the last edited message from a specified channel!",
-		options: [
-			{
-				type: 7, // text channel
-				name: "channel",
-				description: "The channel to snipe",
-			},
-		],
+		options,
 	},
 	{
 		name: "reactionsnipe",
 		description:
 			"Shows the last removed reaction from a specified channel!",
-		options: [
-			{
-				type: 7, // text channel
-				name: "channel",
-				description: "The channel to snipe",
-			},
-		],
+		options,
 	},
 ];
 
