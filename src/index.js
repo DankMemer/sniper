@@ -24,7 +24,7 @@ client.on("ready", () => {
 });
 
 client.on("messageDelete", async (message) => {
-	if (message.partial || message.embeds.length && !message.content) return; // content is null or deleted embed
+	if (message.partial || (message.embeds.length && !message.content)) return; // content is null or deleted embed
 
 	snipes[message.channel.id] = {
 		author: message.author,
