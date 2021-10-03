@@ -24,12 +24,15 @@ client.on("ready", () => {
 });
 
 client.on("messageDelete", async (message) => {
-	if (message.partial) return; // content is null
+	if (message.partial || (message.embeds.length && !message.content)) return; // content is null or deleted embed
 
 	snipes[message.channel.id] = {
 		author: message.author,
 		content: message.content,
 		createdAt: message.createdTimestamp,
+		image: message.attachments.first()
+			? message.attachments.first().proxyURL
+			: null,
 	};
 });
 
@@ -63,19 +66,16 @@ client.on("interactionCreate", async (interaction) => {
 	if (interaction.commandName === "snipe") {
 		const snipe = snipes[channel.id];
 
-		await interaction.reply(
-			snipe
-				? {
-						embeds: [
-							new MessageEmbed()
-								.setDescription(snipe.content)
-								.setAuthor(snipe.author.tag)
-								.setFooter(`#${channel.name}`)
-								.setTimestamp(snipe.createdAt),
-						],
-				  }
-				: "There's nothing to snipe!"
-		);
+		if (!snipe) return interaction.reply("There's nothing to snipe!");
+
+		const embed = new MessageEmbed()
+			.setAuthor(snipe.author.tag)
+			.setFooter(`#${channel.name}`)
+			.setTimestamp(snipe.createdAt);
+		snipe.content ? embed.setDescription(snipe.content) : null;
+		snipe.image ? embed.setImage(snipe.image) : null;
+
+		await interaction.reply({ embeds: [embed] });
 	} else if (interaction.commandName === "editsnipe") {
 		const snipe = editSnipes[channel.id];
 
