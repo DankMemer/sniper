@@ -30,7 +30,7 @@ client.on("messageDelete", async (message) => {
 	if (message.partial) return; // content is null or deleted embed
 
 	snipes[message.channel.id] = {
-		author: message.author,
+		author: message.author.tag,
 		content: message.content,
 		embeds: message.embeds,
 		attachments: [...message.attachments.values()].map((a) => a.proxyURL),
@@ -42,7 +42,7 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
 	if (oldMessage.partial) return; // content is null
 
 	editSnipes[oldMessage.channel.id] = {
-		author: oldMessage.author,
+		author: oldMessage.author.tag,
 		content: oldMessage.content,
 		createdAt: newMessage.editedTimestamp,
 	};
@@ -52,7 +52,7 @@ client.on("messageReactionRemove", async (reaction, user) => {
 	if (reaction.partial) reaction = await reaction.fetch();
 
 	reactionSnipes[reaction.message.channel.id] = {
-		user: user,
+		user: user.tag,
 		emoji: reaction.emoji,
 		messageURL: reaction.message.url,
 		createdAt: Date.now(),
@@ -88,7 +88,7 @@ client.on("interactionCreate", async (interaction) => {
 			await paginator.start({ interaction });
 		} else {
 			const embed = new MessageEmbed()
-				.setAuthor(snipe.author.tag)
+				.setAuthor(snipe.author)
 				.setFooter(`#${channel.name}`)
 				.setTimestamp(snipe.createdAt);
 			if (snipe.content) embed.setDescription(snipe.content);
@@ -110,7 +110,7 @@ client.on("interactionCreate", async (interaction) => {
 						embeds: [
 							new MessageEmbed()
 								.setDescription(snipe.content)
-								.setAuthor(snipe.author.tag)
+								.setAuthor(snipe.author)
 								.setFooter(`#${channel.name}`)
 								.setTimestamp(snipe.createdAt),
 						],
@@ -130,7 +130,7 @@ client.on("interactionCreate", async (interaction) => {
 										snipe.emoji
 									)} on [this message](${snipe.messageURL})`
 								)
-								.setAuthor(snipe.user.tag)
+								.setAuthor(snipe.user)
 								.setFooter(`#${channel.name}`)
 								.setTimestamp(snipe.createdAt),
 						],
