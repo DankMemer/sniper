@@ -10,7 +10,7 @@ const {
 
 module.exports = class Paginator {
 	/**
-	 * @param {MessageEditOptions[]} data
+	 * @param {MessageEditOptions[]} data Array with edit options for each page.
 	 */
 	constructor(data) {
 		if (!data?.length)
