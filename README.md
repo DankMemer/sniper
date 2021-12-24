@@ -37,6 +37,9 @@ Without specifying [guild id], snipe command will available on all of your app's
 
 With [guild id] it will be available only within the guild specified. It will update instantly.
 
+## Dockerfile instructions
+An example Dockerfile has been included. Modify line 12 to change the guild id. If you want to make the bot global, simply comment out line 12.
+
 ## License
 
 [MIT](https://tldrlegal.com/license/mit-license)
