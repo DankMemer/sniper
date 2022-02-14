@@ -9,7 +9,7 @@ COPY . /usr/src/app
 RUN npm install
 
 # Register guild (Optional)
-RUN npm run register [guild id]
+RUN npm run register 700013821804412980
 
 RUN apt update && apt upgrade -y
 
