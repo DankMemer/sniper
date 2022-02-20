@@ -88,8 +88,8 @@ client.on("interactionCreate", async (interaction) => {
 			await paginator.start({ interaction });
 		} else {
 			const embed = new MessageEmbed()
-				.setAuthor(snipe.author)
-				.setFooter(`#${channel.name}`)
+				.setAuthor({ name: snipe.author })
+				.setFooter({ text: `#${channel.name}` })
 				.setTimestamp(snipe.createdAt);
 			if (snipe.content) embed.setDescription(snipe.content);
 			if (snipe.attachments.length) embed.setImage(snipe.attachments[0]);
@@ -110,8 +110,8 @@ client.on("interactionCreate", async (interaction) => {
 						embeds: [
 							new MessageEmbed()
 								.setDescription(snipe.content)
-								.setAuthor(snipe.author)
-								.setFooter(`#${channel.name}`)
+								.setAuthor({ name: snipe.author })
+								.setFooter({ text: `#${channel.name}` })
 								.setTimestamp(snipe.createdAt),
 						],
 				  }
@@ -130,8 +130,8 @@ client.on("interactionCreate", async (interaction) => {
 										snipe.emoji
 									)} on [this message](${snipe.messageURL})`
 								)
-								.setAuthor(snipe.user)
-								.setFooter(`#${channel.name}`)
+								.setAuthor({ name: snipe.user })
+								.setFooter({ text: `#${channel.name}` })
 								.setTimestamp(snipe.createdAt),
 						],
 				  }
