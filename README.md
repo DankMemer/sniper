@@ -6,7 +6,7 @@
 
 ## Setup
 
-Node.js 16.6.0 or newer is required.
+[Node.js 16.9.0](https://nodejs.org) or newer is required.
 
 1. Run:
 
