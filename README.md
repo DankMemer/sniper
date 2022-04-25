@@ -32,10 +32,10 @@ $ npm run register [guild id]
 $ npm run bot
 ```
 
-Note:
-Without specifying [guild id], snipe command will available on all of your app's guilds. It will fan out slowly across all guilds, and will be guaranteed to be updated in an hour (due to Discord's cache).
-
-With [guild id] it will be available only within the guild specified. It will update instantly.
+> Note:
+> Without specifying [guild id], the snipe commands will be available to all of your app's guilds. They will fan out slowly across all guilds and will be guaranteed to be updated in an hour (due to Discord's cache).
+> 
+> With [guild id] they will be available only within the guild specified and will update instantly.
 
 ## Dockerfile instructions
 An [example Dockerfile](Dockerfile.example) has been included. Modify line 12 to change the guild id. If you want to make the bot global, simply comment out line 12.
