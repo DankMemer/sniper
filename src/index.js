@@ -39,7 +39,7 @@ client.on("messageDelete", async (message) => {
 });
 
 client.on("messageUpdate", async (oldMessage, newMessage) => {
-	if (oldMessage.partial) return; // content is null
+	if (oldMessage.partial  || oldMessage === newMessage || newMessage.author.bot === true) return; // content is null
 
 	editSnipes[oldMessage.channel.id] = {
 		author: oldMessage.author.tag,
